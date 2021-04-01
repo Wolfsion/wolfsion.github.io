@@ -1,0 +1,94 @@
+I"�<h1 id="天气项目">天气项目</h1>
+
+<h2 id="逻辑层">逻辑层</h2>
+
+<h3 id="数据模型">数据模型</h3>
+
+<ul>
+  <li>PlaceResponse—json文件对应的数据类</li>
+</ul>
+
+<h3 id="网络层">网络层</h3>
+
+<ul>
+  <li>PlaceService—封装Retrofit网络请求</li>
+  <li>ServiceCreator—创建接口动态处理对象的工厂</li>
+  <li>WeatherNetwork—网络数据访问入口，前两者服务于此</li>
+</ul>
+
+<h3 id="仓库">仓库</h3>
+
+<ul>
+  <li>Repository—根据情况取网络或本地数据</li>
+</ul>
+
+<h3 id="桥梁">桥梁</h3>
+
+<ul>
+  <li>PlaceViewModel—逻辑层和UI层间的数据桥梁</li>
+</ul>
+
+<h2 id="ui层">UI层</h2>
+
+<h2 id="tips">tips</h2>
+
+<ul>
+  <li>全局获取Context</li>
+</ul>
+
+<h1 id="画廊项目">画廊项目</h1>
+
+<ul>
+  <li>1：配置基础类，提供全局上下文和KEY</li>
+  <li>2：写json对应的数据类</li>
+  <li>3：写网络申请接口单例Volley</li>
+  <li>
+    <p>4：写对应的ViewModel，调用网络接口获取数据，声明对应LiveData</p>
+  </li>
+  <li>5：创建各Fragment和对应layout文件</li>
+  <li>6：创建navigation导航并添加Fragment配置</li>
+  <li>
+    <p>7：对Activity中引入NavHost容器</p>
+  </li>
+  <li>8：写Fragment对应Layout，添加RecycleView</li>
+  <li>9：写对应View的Adaptor适配器</li>
+  <li>
+    <p>10：写对应的Fragment适配RecycleView，观察LiveData数据作对应数据逻辑</p>
+  </li>
+  <li>11：创建菜单资源文件，配置id</li>
+  <li>
+    <p>12：重写Fragment中菜单相关方法作UI逻辑</p>
+  </li>
+  <li>13：写Adapter中holder的click回调</li>
+  <li>14：写gallery_photo碎片及layout文件</li>
+  <li>15：写回滚导航</li>
+</ul>
+
+<h1 id="设计模式">设计模式</h1>
+
+<h2 id="工厂模式">工厂模式</h2>
+
+<ul>
+  <li>借助通用接口将逻辑与使用分开</li>
+  <li>创建实现同一接口的对象实例格式统一</li>
+</ul>
+
+<h3 id="抽象工厂模式">抽象工厂模式</h3>
+
+<ul>
+  <li>工厂生成器</li>
+  <li>管理多个工厂单例</li>
+</ul>
+
+<h2 id="创建型模式">创建型模式</h2>
+
+<ul>
+  <li>较小对象构建较大对象</li>
+</ul>
+
+<h2 id="单例模式">单例模式</h2>
+
+<ul>
+  <li>对象只有一个实例且有全访问域</li>
+</ul>
+:ET
