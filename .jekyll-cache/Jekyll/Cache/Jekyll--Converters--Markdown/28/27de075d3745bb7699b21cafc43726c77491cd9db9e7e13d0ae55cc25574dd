@@ -1,0 +1,313 @@
+I"�$<h1 id="深度学习基础">深度学习基础</h1>
+
+<h2 id="监督学习与无监督学习">监督学习与无监督学习</h2>
+
+<h3 id="监督学习">监督学习</h3>
+
+<ul>
+  <li>概述：事先给出分类标签</li>
+  <li>两类问题：
+    <ul>
+      <li>回归问题：模型为连续线性映射</li>
+      <li>分类问题：模型为离散映射
+        <ul>
+          <li>二分类</li>
+          <li>多分类</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="无监督学习">无监督学习</h3>
+
+<ul>
+  <li>概述：机器自己寻找数据的隐藏规律或特征进行分类</li>
+  <li>常用算法：聚类</li>
+</ul>
+
+<h3 id="优缺点对比">优缺点对比</h3>
+
+<ul>
+  <li>监督学习对数据集要求更高，模型可能更符合需求和初衷</li>
+  <li>无监督学习可挖掘意外的映射关系，结果可控性也相对较差</li>
+</ul>
+
+<h3 id="发展">发展</h3>
+
+<ul>
+  <li>半监督学习</li>
+  <li>弱监督学习</li>
+</ul>
+
+<h2 id="欠拟合与过拟合">欠拟合与过拟合</h2>
+
+<h3 id="欠拟合">欠拟合</h3>
+
+<ul>
+  <li>概述</li>
+  <li>解决方案</li>
+</ul>
+
+<h3 id="过拟合">过拟合</h3>
+
+<ul>
+  <li>概述</li>
+  <li>解决方案</li>
+</ul>
+
+<h1 id="神经网络">神经网络</h1>
+
+<h2 id="基础">基础</h2>
+
+<h3 id="后向传播">后向传播</h3>
+
+<ul>
+  <li>作用：对搭建的模型参数进行微调</li>
+  <li>原理：复合函数求导</li>
+</ul>
+
+<h3 id="损失与优化">损失与优化</h3>
+
+<ul>
+  <li>损失
+    <ul>
+      <li>概述：预测值与真实值之间的误差</li>
+      <li>损失函数
+        <ul>
+          <li>均方误差函数：预测值与真实值之差的平方的期望值</li>
+          <li>均方根误差函数：预测值与真实值之差的平方的期望值的算术平方根</li>
+          <li>平均绝对误差函数：预测值与真实值之差的绝对值的期望值</li>
+        </ul>
+      </li>
+      <li>梯度即为损失函数的各偏导数组成的向量</li>
+    </ul>
+  </li>
+  <li>优化
+    <ul>
+      <li>概述：在不过拟合的情况下调整参数使优化最小</li>
+      <li>组成：
+        <ul>
+          <li>参数的初始化</li>
+          <li>参数微调方式</li>
+          <li>选取合适的学习速率</li>
+        </ul>
+      </li>
+      <li>一阶导数与梯度</li>
+      <li>优化函数
+        <ul>
+          <li>解决问题：局部最优、抖动、优化时间</li>
+          <li>分类：
+            <ul>
+              <li>梯度下降</li>
+              <li>批量梯度下降（批量）</li>
+              <li>随机梯度下降</li>
+              <li>自适应Adam</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>激活函数
+        <ul>
+          <li>解决问题：适应非线性模型</li>
+          <li>分类：
+            <ul>
+              <li>Sigmod</li>
+              <li>tanh</li>
+              <li>ReLU</li>
+            </ul>
+          </li>
+          <li>准则：
+            <ul>
+              <li>避免梯度消失</li>
+              <li>使用零中心数据</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="线性回归">线性回归</h2>
+
+<h3 id="实际问题">实际问题</h3>
+
+<ul>
+  <li>预测连续值</li>
+  <li>房屋价格、气温、销售额等连续问题</li>
+</ul>
+
+<h3 id="模型定义">模型定义</h3>
+
+<ul>
+  <li>确定特征和权重</li>
+  <li>表示==标签==关于==特征==和==模型参数==的线性关系</li>
+</ul>
+
+<h3 id="模型训练">模型训练</h3>
+
+<ul>
+  <li>训练数据得到==预测标签==</li>
+  <li>由预测标签和实际标签得到==损失函数==</li>
+  <li>由==优化算法==确定==学习率==并更新==模型参数==</li>
+</ul>
+
+<h3 id="模型表示">模型表示</h3>
+
+<pre><code class="language-mermaid">graph BT;
+	input1((x1))--&gt;output((O));
+	input2((x2))--&gt;output((O));
+</code></pre>
+
+<ul>
+  <li>O表示输出层，x1和x2表示输入层</li>
+  <li>输出层和输入层各个输入完全连接时，输出层又称为全连接层或稠密层</li>
+</ul>
+
+<h2 id="卷积神经网络">卷积神经网络</h2>
+
+<h2 id="softmax回归">Softmax回归</h2>
+
+<h3 id="概述">概述</h3>
+
+<ul>
+  <li>模型输出为多个离散值</li>
+  <li>常用示例为图像类别分类</li>
+</ul>
+
+<h3 id="描述">描述</h3>
+
+<p>设：特征类别为4，输出类别为3</p>
+
+<ul>
+  <li>模型输出结果为1×3的向量</li>
+  <li>模型权重为12个标量，偏差为3个标量</li>
+</ul>
+
+<pre><code class="language-mermaid">graph BT;
+	input1((x1))--&gt;output1((o1));
+	input2((x2))--&gt;output1((o1));
+	input3((x3))--&gt;output1((o1));
+	input4((x4))--&gt;output1((o1));
+	input1((x1))--&gt;output2((o2));
+	input2((x2))--&gt;output2((o2));
+	input3((x3))--&gt;output2((o2));
+	input4((x4))--&gt;output2((o2));
+	input1((x1))--&gt;output3((o3));
+	input2((x2))--&gt;output3((o3));
+	input3((x3))--&gt;output3((o3));
+	input4((x4))--&gt;output3((o3));   
+</code></pre>
+
+<h3 id="softmax运算">Softmax运算</h3>
+
+<ul>
+  <li>将输出值映射到[0,1]之间</li>
+  <li>将一系列输出值归一化</li>
+  <li>计算示例如式(1)</li>
+</ul>
+
+\[\begin{align}
+&amp; \widehat {y}_1,\widehat {y}_2,\widehat {y}_3 \,=\, softmax(o_1,o_2,o_3) \tag{1}\\
+\\
+\\
+y_1 = \frac {exp(o_1)}{\sum_{i=1}^3exp(o_i)} \qquad&amp; \qquad
+y_2 = \frac {exp(o_2)}{\sum_{i=1}^3exp(o_i)} \qquad \qquad
+y_3 = \frac {exp(o_3)}{\sum_{i=1}^3exp(o_i)}
+\end{align}\]
+
+<h1 id="python类">Python类</h1>
+
+<h2 id="概述-1">概述</h2>
+
+<ul>
+  <li>class关键字后跟类名</li>
+  <li>创建实例不需要new关键字</li>
+  <li>类中方法的定义必须有self参数，调用时可不需要传入</li>
+  <li>self指代类的实例，类中引用实例变量格式为self.xxx</li>
+  <li>self.__class__指代类本身</li>
+</ul>
+
+<h2 id="构造函数">构造函数</h2>
+
+<ul>
+  <li>__init__(self,…):</li>
+</ul>
+
+<h2 id="继承与重写">继承与重写</h2>
+
+<ul>
+  <li>
+    <p>派生类——子类，基类——父类</p>
+  </li>
+  <li>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DerivedClassName</span><span class="p">(</span><span class="n">modname</span><span class="p">.</span><span class="n">BaseClassName</span><span class="p">):</span>  <span class="c1">#继承写法
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">sample</span><span class="p">(</span><span class="n">speaker</span><span class="p">,</span><span class="n">student</span><span class="p">):</span>     <span class="c1">#多继承
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Parent</span><span class="p">):</span>
+	<span class="p">...</span>
+  	
+<span class="n">c</span> <span class="o">=</span> <span class="n">Child</span><span class="p">()</span>          <span class="c1"># 子类实例
+</span><span class="n">c</span><span class="p">.</span><span class="n">myMethod</span><span class="p">()</span>         <span class="c1"># 子类调用重写方法
+</span><span class="nb">super</span><span class="p">(</span><span class="n">Child</span><span class="p">,</span><span class="n">c</span><span class="p">).</span><span class="n">myMethod</span><span class="p">()</span> <span class="c1">#用子类对象调用父类已被覆盖的方法
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="类专有方法">类专有方法</h2>
+
+<ul>
+  <li><strong>__init__ :</strong> 构造函数，在生成对象时调用</li>
+  <li><strong>__del__ :</strong> 析构函数，释放对象时使用</li>
+  <li><strong>__repr__ :</strong> 打印，转换</li>
+  <li><strong>__setitem__ :</strong> 按照索引赋值</li>
+  <li><strong>__getitem__:</strong> 按照索引获取值</li>
+  <li><strong>__len__:</strong> 获得长度</li>
+  <li><strong>__cmp__:</strong> 比较运算</li>
+  <li><strong>__call__:</strong> 函数调用</li>
+  <li><strong>__add__:</strong> 加运算</li>
+  <li><strong>__sub__:</strong> 减运算</li>
+  <li><strong>__mul__:</strong> 乘运算</li>
+  <li><strong>__truediv__:</strong> 除运算</li>
+  <li><strong>__mod__:</strong> 求余运算</li>
+  <li><strong>__pow__:</strong> 乘方</li>
+</ul>
+
+<h2 id="类相关函数">类相关函数</h2>
+
+<ul>
+  <li>super()：用于调用父类（超类）的方法</li>
+</ul>
+
+<h2 id="对象销毁与回收">对象销毁与回收</h2>
+
+<ul>
+  <li>continue…</li>
+</ul>
+
+<h2 id="私有属性与私有方法">私有属性与私有方法</h2>
+
+<ul>
+  <li>私有变量和私有方法都以__（两个下划线）开头</li>
+  <li>外部实例不能访问私有变量和方法</li>
+</ul>
+
+<h1 id="python补充">Python补充</h1>
+
+<ul>
+  <li>random.shuffle(indexs)：随机排列列表indices</li>
+  <li>np.random.normal()：生成正态分布数据列</li>
+  <li>plt.scatter()：绘制散点图</li>
+  <li>Tensor.index_select()：按照tenosr索引行或列，0索引行，1索引列</li>
+  <li>yield关键字：生成器返回结果</li>
+  <li>生成器与迭代器*：</li>
+  <li>item()：索引精度更高</li>
+</ul>
+
+:ET

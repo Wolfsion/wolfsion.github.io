@@ -1,0 +1,626 @@
+I"�8<h1 id="公钥密码学">公钥密码学</h1>
+
+<h2 id="数学基础">数学基础</h2>
+
+<h3 id="因子">因子</h3>
+
+<ul>
+  <li>描述：
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>b</td>
+              <td>a表示b整除a，即b为a的一个因子</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+  <li>性质：
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>若b</td>
+              <td>a且a</td>
+              <td>b，则有a=±b</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>任何数a有a</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="素数">素数</h3>
+
+<ul>
+  <li>描述：
+    <ul>
+      <li>因子只有1和本身的数</li>
+    </ul>
+  </li>
+  <li>定理：
+    <ul>
+      <li>任何大于1的数都可以分解为素数的幂乘形式</li>
+      <li>任何大于1的数都可以由所有素数的集合的指数表示</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>a</td>
+              <td>b $\rightarrow$ a~p~ &lt;= b~p~</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+  <li>最大公因子（非负）
+    <ul>
+      <li>表示：gcd(a,b)</li>
+      <li>gcd(a,0) = 0</li>
+    </ul>
+  </li>
+  <li>互素
+    <ul>
+      <li>当gcd(a,b) = 1时，则a和b互素</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="模运算">模运算</h3>
+
+<ul>
+  <li>描述：a mod n 或 a % n</li>
+  <li>等价等式： a = $\lfloor a/n \rfloor$×n + a mod n</li>
+</ul>
+
+<h3 id="模指数运算">模指数运算</h3>
+
+<ul>
+  <li>将指数表示为二进制数，得到2倍率关系</li>
+  <li>运用同模乘法运算性质拆分递归</li>
+</ul>
+
+<h3 id="同模">同模</h3>
+
+<ul>
+  <li>描述：若a mon n = b mod n，则有 a $\equiv$ b (mod n)</li>
+  <li>性质：
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>若n</td>
+              <td>(a-b)，则有 a $\equiv$ b (mod n)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>若a $\equiv$ b (mod n)，b$\equiv$ c (mod n)，则有a $\equiv$ c (mod n)</li>
+    </ul>
+  </li>
+  <li>运算性质：
+    <ul>
+      <li>(a+b) mod n = [(a mod n) + (b mod n)] mod n</li>
+      <li>(a - b) mod n = [(a mod n) - (b mod n)] mod n</li>
+      <li>(a×b) mod n = [(a mod n) × (b mod n)] mod n</li>
+    </ul>
+  </li>
+  <li>==扩展==：
+    <ul>
+      <li>(m mod p)^2^ mod p = m^2^ mod p</li>
+      <li>若 a $\equiv$ b (mod n)，则有 a^2^ $\equiv$ b^2^ (mod n)</li>
+      <li>若a $\equiv$ b (mod n)，则有 ka $\equiv$ kb (mod n)</li>
+      <li>若a $\equiv$ b (mod n)，则有 a = kn + b</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="乘法逆元">乘法逆元</h3>
+
+<ul>
+  <li>描述：ed $\equiv$ 1 (mod m)，满足gcd(e,m) = 1，则称e、d关于模m互为乘法逆元</li>
+  <li>求解逆元：e,m $\Longrightarrow$ d</li>
+</ul>
+
+<h2 id="定理">定理</h2>
+
+<h3 id="大整数分解">大整数分解</h3>
+
+<ul>
+  <li>素因子分解为素因子的幂乘形式</li>
+</ul>
+
+<h3 id="费尔马定理">费尔马定理</h3>
+
+<ul>
+  <li>a^(p-1)^ $\equiv$ 1 (mod p)  需满足p为素数</li>
+</ul>
+
+<h3 id="欧拉定理">欧拉定理</h3>
+
+<ul>
+  <li>欧拉函数：$\phi$ (n) $\rightarrow$小于n且与n互素的正整数个数</li>
+  <li>补充：如果一个数n可分解为两个素数p,q，则$\phi$ (n) = (p-1)(q-1)</li>
+  <li>欧拉定理：对任意的a,n满足gcd(a,n) = 1 $\rightarrow$ a^$\phi$ (n)  $\equiv$  1 (mod n)</li>
+</ul>
+
+<h3 id="欧几里得算法">欧几里得算法</h3>
+
+<ul>
+  <li>
+    <p>也称辗转相除法，求最大公约数</p>
+  </li>
+  <li>
+    <p>引理：gcd(a,b) = gcd(b,a mod b)</p>
+  </li>
+</ul>
+
+<h3 id="扩展欧几里得算法">扩展欧几里得算法</h3>
+
+<ul>
+  <li>问题：形如ax+by=z(a,b均不为0，且a,b,z均为整数)，求x,y整数解</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>引理：裴蜀定理 若ax+by=z有整数解 则gcd(a,b)</td>
+          <td>z</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>扩展欧几里得（二元一次方程通解）：ExGcd，求乘法逆元</li>
+</ul>
+
+<h3 id="离散对数">离散对数</h3>
+
+<ul>
+  <li>求x以满足y  $\equiv$  g^x^ (mod p)，可写作x  $\equiv$  log~g~ y (mod p)</li>
+  <li>若g是p的本原根，则x一定存在，否则不一定存在</li>
+</ul>
+
+<h3 id="本原根">本原根</h3>
+
+<ul>
+  <li>a^m^ $\equiv$ 1 (mod n), gcd(a,n) = 1
+    <ul>
+      <li>根据欧拉定理可得一定存在，m = $\phi$ (n)</li>
+      <li>最小的m为a的阶</li>
+    </ul>
+  </li>
+  <li>描述：数a的阶为 $\phi$ (n)，则称a为n的本原根</li>
+  <li>性质：若p是素数，a是p的本原根，则有： a^1^ , a^2^ , … , a^p-1^ 是模p各不相同的</li>
+</ul>
+
+<h2 id="rsa">RSA</h2>
+
+<h3 id="概述">概述</h3>
+
+<ul>
+  <li>乘方运算时间复杂度小，容易计算</li>
+  <li>素因子分解困难计算</li>
+</ul>
+
+<h3 id="流程">流程</h3>
+
+<ul>
+  <li>任选两个素数p和q</li>
+  <li>计算n=pq，$\phi$ (n) = (p-1)(q-1)</li>
+  <li>随机选择e，满足1&lt;e&lt;$\phi$ (n)且gcd(e,$\phi$ (n)) = 1，由(e,n)组成公钥</li>
+  <li>求解同余方程，ed $\equiv$ 1 (mod$\phi$ (n)) 且 0$\leq$d$\leq$n，由(d,n)组成私钥</li>
+</ul>
+
+<h3 id="安全性参数">安全性参数*</h3>
+
+<h3 id="攻击rsa">攻击RSA</h3>
+
+<ul>
+  <li>穷举搜索</li>
+  <li>数学攻击</li>
+  <li>计时攻击（基于解密的运行情况）</li>
+  <li>选择密文攻击</li>
+</ul>
+
+<h3 id="习题待做">习题——待做</h3>
+
+<h1 id="dh交换">DH交换</h1>
+
+<h3 id="概述-1">概述</h3>
+
+<ul>
+  <li>密钥分配方案，用于密钥建立</li>
+  <li>不能用于交换大量信息</li>
+  <li>只对通信双方已知</li>
+</ul>
+
+<h3 id="原理">原理</h3>
+
+<ul>
+  <li>离散对数问题</li>
+</ul>
+
+<h3 id="交换流程">交换流程</h3>
+
+<ul>
+  <li>
+    <p>全局参数：大素数q和模q的本原根$\alpha$</p>
+
+    <pre><code class="language-mermaid">sequenceDiagram
+	Note left of Alice:Block1
+	Alice -&gt;&gt; Bob:Ya
+	Note right of Bob:Block2
+	Bob -&gt;&gt; Alice:Yb
+	Note left of Alice:Block3
+</code></pre>
+  </li>
+  <li>Block1: random X~a~ &lt; q; Y~a~ = $\alpha$^Xa^ mod q</li>
+  <li>Block2: random X~b~ &lt; q; Y~b~ = $\alpha$^Xb^ mod q; K = Y~a~^Xb^ mod q</li>
+  <li>Block3: K = Y~b~^Xa^ mod q</li>
+</ul>
+
+<h3 id="安全性">安全性</h3>
+
+<ul>
+  <li>K为Alice和Bob两个用户的共享密钥</li>
+  <li>攻击者求解x，须求解离散对数</li>
+</ul>
+
+<h3 id="密钥交换">密钥交换</h3>
+
+<ul>
+  <li>分类
+    <ul>
+      <li>暂态DH</li>
+      <li>固定DH</li>
+    </ul>
+  </li>
+  <li>缺陷
+    <ul>
+      <li>无法抵御中间人攻击</li>
+    </ul>
+  </li>
+  <li>原因
+    <ul>
+      <li>缺少消息认证</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="elgamal密码体系">ElGamal密码体系</h1>
+
+<h2 id="原理-1">原理</h2>
+
+<ul>
+  <li>基于离散对数问题</li>
+  <li>类似DH密钥协商协议</li>
+</ul>
+
+<h2 id="算法流程">算法流程</h2>
+
+<ul>
+  <li>全局假设：Bob向Alice发送信息</li>
+</ul>
+
+<pre><code class="language-mermaid">sequenceDiagram
+	Note left of Alice:Block1
+	Alice -&gt;&gt; Public:A公钥
+	Note right of Bob:Block2
+	Public -&gt;&gt; Bob:A公钥
+	Bob -&gt;&gt; Alice:(C1,C2)
+	Note left of Alice:Block3
+</code></pre>
+
+<ul>
+  <li>Block1:
+    <ul>
+      <li>Alice选择一个素数q，得到q的一个本原根$\alpha$</li>
+      <li>产生一个Xa $\in$ (1, q-1)，计算Ya = $\alpha$^Xa^ mod q</li>
+      <li>A的私钥为Xa，公钥为{q, $\alpha$, Ya}交由可信公开中心Public保管</li>
+    </ul>
+  </li>
+  <li>Block2:
+    <ul>
+      <li>Bob去可信公开中心Public获得A的公钥，准备发送的明文M $\in$ [1, q-1]</li>
+      <li>随机产生一个整数k $\in$ [1, q-1]，计算K = Ya^k^ mod q</li>
+      <li>计算C~1~ = $\alpha$^k^ mod q和C~2~ = K*M mod q，得到最终密文(C~1~,C~2~)</li>
+    </ul>
+  </li>
+  <li>Block3:
+    <ul>
+      <li>Alice计算得到K = C~1~^Xa^ mod q</li>
+      <li>求解K关于模q的乘法逆元K^-1^</li>
+      <li>计算得到明文M = (C~2~ K^-1^) mod q</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="安全性-1">安全性</h2>
+
+<ul>
+  <li>安全性依赖于Zp*上的离散对数问题</li>
+  <li>加密过程，不同消息m需要选取不同随机数k</li>
+</ul>
+
+<h2 id="攻击举例">攻击举例</h2>
+
+<ul>
+  <li>假设k用于多个明文加密，并且其中一次明文M~1~已知，计算其余明文M~2~ 相对容易</li>
+</ul>
+
+<ol>
+  <li>
+    <p>对应M~1~有C~11~ = $\alpha$^k^ mod q，C~12~ = K*M~1~ mod qM~2~有C~21~ = $\alpha$^k^ mod q，C~22~ = K*M~2~ mod q</p>
+  </li>
+  <li>
+    <p>容易得到
+\(\frac {C_{12}}{C_{22}} = \frac {M_1\,mod\,q}{M_2\,mod\,q}\)</p>
+  </li>
+  <li>
+    <p>则有 M~2~ =  (C~12~)^-1^ *C~22~ *M~1~ mod q</p>
+  </li>
+</ol>
+
+<h2 id="缺陷">缺陷</h2>
+
+<ul>
+  <li>需生成一系列不同随机数</li>
+  <li>密文长度加倍，冗余导致传输效率下降</li>
+</ul>
+
+<h1 id="ecc密码体系">ECC密码体系</h1>
+
+<h2 id="优势">优势</h2>
+
+<ul>
+  <li>较小长度密钥便可达到较高计算难度</li>
+</ul>
+
+<h2 id="原理-2">原理</h2>
+
+<ul>
+  <li>
+    <p>椭圆曲线：y^2^ + axy + by = x^3^ + cx^2^ + dx + e</p>
+  </li>
+  <li>
+    <p>点加法：P + Q = R，过P和Q的直线与椭圆曲线相交的第三点的x轴对称点</p>
+  </li>
+  <li>
+    <p>求椭圆曲线上的点集E~p~ (a,b)，椭圆曲线等式两边同模p运算</p>
+  </li>
+  <li>
+    <p>加法法则：( P,Q $\in$ E~p~ (a,b) )</p>
+
+    <ul>
+      <li>
+        <p>P + O = P</p>
+      </li>
+      <li>
+        <p>P = (x, y)，那么-P = (x, -y)是P的加法逆元，有P + (-P) = 0</p>
+      </li>
+      <li>
+        <p>P = (x~1~, y~1~)，Q = (x~2~, y~2~)，P $\neq$ -Q，则P + Q = (x~3~, y~3~)</p>
+
+        <ul>
+          <li>
+            <p>x~3~ $\equiv$ $\lambda$^2^ - x~1~ - x~2~ (mod p)</p>
+          </li>
+          <li>
+            <p>y~3~ $\equiv$ $\lambda$(x~1~ - x~3~) - y~1~ (mod p)</p>
+          </li>
+          <li>
+            <p>其中$\lambda$为
+\(\lambda = 
+	\begin{cases} 
+	&amp;\frac {y_2 - y_1}{x_2 - x_1}, &amp; P\neq Q\\
+	&amp;\frac {3x_1^2 + a}{2y_1}, &amp; P= Q
+	\end{cases}\)</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>ECDLP（EC上的离散对数问题）：Q = kP</p>
+
+        <p>已知P和Q，k的计算是困难的，而已知P和k，Q的计算是容易的</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="算法流程-1">算法流程</h2>
+
+<h3 id="密钥交换-1">密钥交换</h3>
+
+<p>y = x^3^ + ax + b (mod p)</p>
+
+<ol>
+  <li>
+    <p>选择素数p(160+ byte)和参数a、b</p>
+  </li>
+  <li>
+    <p>选择一个生成点G(x~1~ , y~1~)</p>
+  </li>
+  <li>
+    <p>A：选取秘密的数r~a~，计算P~a~ = r~a~G</p>
+
+    <p>B：选取秘密的数r~b~，计算P~b~ = r~b~G</p>
+  </li>
+  <li>
+    <p>交换P~a~和P~b~</p>
+  </li>
+  <li>
+    <p>A：计算K = r~a~P~b~ = r~a~r~b~G</p>
+
+    <p>B：计算K = r~b~P~a~ = r~b~r~a~G</p>
+  </li>
+</ol>
+
+<p>p、a、b、点G 是全局公开参数</p>
+
+<h3 id="加解密">加解密</h3>
+
+<p>y = x^3^ + ax + b (mod p)</p>
+
+<ol>
+  <li>
+    <p>初始化p、a、b、点G、A的私钥r~a~和公钥P~a~ 、B的私钥r~b~和公钥P~b~</p>
+  </li>
+  <li>
+    <p>A加密消息发送到B：</p>
+
+    <p>​	明文m的编码点P~m~，选择随机数k，密文</p>
+
+    <p>​	C = {C~1~,C~2~} = {kG, P~m~ + kP~b~}</p>
+  </li>
+  <li>
+    <p>B解密：</p>
+
+    <p>​	编码点P~m~ = C~2~ - r~b~C~1~ = P~m~ + kP~b~ -  r~b~kG =  P~m~ + kr~b~G -  r~b~kG = P~m~</p>
+  </li>
+</ol>
+
+<h2 id="评估">评估</h2>
+
+<ul>
+  <li>密钥长度相等情况下，RSA和ECC速度相当</li>
+  <li>相同安全强度下，ECC可以使用较少位数</li>
+</ul>
+
+<h2 id="应用场景">应用场景</h2>
+
+<ul>
+  <li>密钥交换</li>
+  <li>加密解密</li>
+</ul>
+
+<h1 id="hash函数">Hash函数</h1>
+
+<h2 id="描述">描述</h2>
+
+<ul>
+  <li>一类特殊的单向函数</li>
+</ul>
+
+<h2 id="要求y--hx">要求y = H(x)</h2>
+
+<ul>
+  <li>x压缩成固定长度比特串y</li>
+  <li>不同的x生成不同的y（可能会碰撞）</li>
+  <li>由y的值无法反推x的值</li>
+</ul>
+
+<h2 id="应用">应用</h2>
+
+<h3 id="消息认证">消息认证</h3>
+
+<ul>
+  <li>加密全文本：加密文本和Hash值</li>
+  <li>加密Hash：仅加密Hash值</li>
+  <li>随机数Hash：Hash值由文本外加一个随机数得出</li>
+  <li>随机数Hash后加密：加密随机数Hash和文本</li>
+</ul>
+
+<pre><code class="language-mermaid">graph LR
+	A[message] --&gt; B((Merge))
+	C[seed] --&gt; B
+	B --&gt; D((Hash))
+	D --&gt; T[hash]
+	A --&gt; E
+	T --&gt; E((Merge))
+	E --&gt; F((Encode))
+	F --&gt; G((Trans))
+	G --&gt; H((Decode))
+	H --&gt; P[message]
+	P --&gt; I((Merge))
+	J[seed] --&gt; I
+	H --&gt; Q[hash]
+	I --&gt; N[hash']
+	N --&gt; Z((Compare))
+	Q --&gt; Z
+	
+</code></pre>
+
+<h3 id="数字签名">数字签名</h3>
+
+<ul>
+  <li>签名</li>
+</ul>
+
+<pre><code class="language-mermaid">graph LR
+	A[message] --&gt; B((Hash))
+	B --&gt; Q[hash]
+	Q --&gt; C((Encode))
+	D[private key a] --&gt; C
+	C --&gt; E[sig]
+	E --&gt; F((Merge))
+	A --&gt; F
+	F --&gt; H((Trans))
+	H --&gt; I((Split))
+	I --&gt; K[message]
+	I --&gt; L[hash,PRa]
+	K --&gt; M((Hash))
+	M --&gt; N[hash']
+	L --&gt; O((Decode))
+	P[public key a] --&gt; O
+	O --&gt; R[hash]
+	R --&gt; S((Compare))
+	N --&gt; S
+</code></pre>
+
+<ul>
+  <li>加密全文本：Merge后使用共享密钥加密整个文本，再进行传输，接收方获得报文后，先使用共享密钥解密，再进行之后的操作。</li>
+</ul>
+
+<h3 id="其他">其他</h3>
+
+<ul>
+  <li>从口令衍生密钥</li>
+  <li>产生随机数</li>
+  <li>给明文增加结构特征保护密文*</li>
+  <li>挑战-应答认证协议*</li>
+</ul>
+
+<h2 id="基本性质">基本性质</h2>
+
+<ul>
+  <li>单向性</li>
+  <li>抗碰撞性：找不到不同x对应相同y</li>
+</ul>
+
+<h2 id="安全性要求">安全性要求</h2>
+
+<ul>
+  <li>输入任意，输出固定长度比特</li>
+  <li>计算效率高</li>
+  <li>单向性</li>
+  <li>弱抗碰撞特性：给定找出碰撞</li>
+  <li>强抗碰撞特性：找出任意一对碰撞</li>
+  <li>伪随机性</li>
+</ul>
+
+<p>关系：强抗碰撞特性 $\subseteq$ 弱抗碰撞特性，单向性与前两者均有相交</p>
+
+<h2 id="攻击">攻击</h2>
+
+<ul>
+  <li>找碰撞：生日攻击</li>
+</ul>
+
+:ET
