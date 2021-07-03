@@ -1,0 +1,249 @@
+I"$<h1 id="密码学基础">密码学基础</h1>
+
+<h2 id="数学基础">数学基础</h2>
+
+<h3 id="因子">因子</h3>
+
+<ul>
+  <li>描述：
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>b</td>
+              <td>a表示b整除a，即b为a的一个因子</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+  <li>性质：
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>若b</td>
+              <td>a且a</td>
+              <td>b，则有a=±b</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>任何数a有a</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="素数">素数</h3>
+
+<ul>
+  <li>描述：
+    <ul>
+      <li>因子只有1和本身的数</li>
+    </ul>
+  </li>
+  <li>定理：
+    <ul>
+      <li>任何大于1的数都可以分解为素数的幂乘形式</li>
+      <li>任何大于1的数都可以由所有素数的集合的指数表示</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>a</td>
+              <td>b $\rightarrow$ a~p~ &lt;= b~p~</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+  <li>最大公因子（非负）
+    <ul>
+      <li>表示：gcd(a,b)</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>gcd(a,0) =</td>
+              <td>a</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+  <li>互素
+    <ul>
+      <li>当gcd(a,b) = 1时，则a和b互素</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="模运算">模运算</h3>
+
+<ul>
+  <li>描述：a mod n 或 a % n</li>
+  <li>等价等式： a = $\lfloor a/n \rfloor$×n + a mod n</li>
+</ul>
+
+<h3 id="模指数运算">模指数运算</h3>
+
+<ul>
+  <li>将指数表示为二进制数，得到2倍率关系</li>
+  <li>运用同模乘法运算性质拆分递归</li>
+</ul>
+
+<h3 id="同模">同模</h3>
+
+<ul>
+  <li>描述：若a mon n = b mod n，则有 a $\equiv$ b (mod n)</li>
+  <li>性质：
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>若n</td>
+              <td>(a-b)，则有 a $\equiv$ b (mod n)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>若a $\equiv$ b (mod n)，b$\equiv$ c (mod n)，则有a $\equiv$ c (mod n)</li>
+    </ul>
+  </li>
+  <li>运算性质：
+    <ul>
+      <li>(a+b) mod n = [(a mod n) + (b mod n)] mod n</li>
+      <li>(a - b) mod n = [(a mod n) - (b mod n)] mod n</li>
+      <li>(a×b) mod n = [(a mod n) × (b mod n)] mod n</li>
+    </ul>
+  </li>
+  <li>==扩展==：
+    <ul>
+      <li>(m mod p)^2^ mod p = m^2^ mod p</li>
+      <li>若 a $\equiv$ b (mod n)，则有 a^2^ $\equiv$ b^2^ (mod n)</li>
+      <li>若a $\equiv$ b (mod n)，则有 ka $\equiv$ kb (mod n)</li>
+      <li>若a $\equiv$ b (mod n)，则有 a = kn + b</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="乘法逆元">==乘法逆元==</h3>
+
+<ul>
+  <li>描述：ed $\equiv$ 1 (mod m)，若满足gcd(e,m) = 1，则一定存在逆元，称e、d关于模m互为乘法逆元</li>
+  <li>求解逆元：e,m $\Longrightarrow$ d</li>
+</ul>
+
+<h2 id="定理">定理</h2>
+
+<h3 id="大整数分解">大整数分解</h3>
+
+<ul>
+  <li>素因子分解的目标形式是：素因子的幂乘形式</li>
+</ul>
+
+<h3 id="费尔马定理">费尔马定理</h3>
+
+<ul>
+  <li>==费马小定理==：a^p^ $\equiv$ a (mod p)  需满足p为素数</li>
+  <li>==费马小定理扩展形式==：a^p-1^ $\equiv$ 1 (mod p)  需满足p为素数，且a mod p $\neq$ 0</li>
+</ul>
+
+<h3 id="欧拉定理">欧拉定理</h3>
+
+<ul>
+  <li>欧拉函数：$\phi$ (n) $\rightarrow$小于n且与n互素的正整数个数</li>
+  <li>补充：如果一个数n可分解为两个素数p,q，则$\phi$ (n) = (p-1)(q-1)</li>
+  <li>==欧拉定理==：对任意的a,n满足gcd(a,n) = 1 $\rightarrow$ a^$\phi$ (n)  $\equiv$  1 (mod n)</li>
+</ul>
+
+<h3 id="欧几里得算法">欧几里得算法</h3>
+
+<ul>
+  <li>也称辗转相除法，求最大公约数</li>
+  <li>==引理==：gcd(a,b) = gcd(b,a mod b)</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">num1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">num2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">num1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num1</span> <span class="o">&lt;</span> <span class="n">num2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">num1</span> <span class="o">=</span> <span class="n">num2</span><span class="p">;</span>
+        <span class="n">num2</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">num2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">num2</span><span class="p">;</span>
+        <span class="n">num2</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">%</span> <span class="n">num2</span><span class="p">;</span>
+        <span class="n">num1</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">num1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="扩展欧几里得算法">扩展欧几里得算法</h3>
+
+<ul>
+  <li>问题：形如ax+by=z(a,b均不为0，且a,b,z均为整数)，求x,y整数解</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>引理：裴蜀定理 若ax+by=z有整数解 则gcd(a,b)</td>
+          <td>z</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>扩展欧几里得（二元一次方程通解）：ExGcd，求乘法逆元</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">exgcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span>
+	
+    <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">y</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="n">t</span><span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">y</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="离散对数">离散对数</h3>
+
+<ul>
+  <li>求x以满足y  $\equiv$  g^x^ (mod p)，可写作x  $\equiv$  log~g~ y (mod p)</li>
+  <li>若g是p的本原根，则x一定存在，否则不一定存在</li>
+</ul>
+
+<h3 id="本原根">本原根</h3>
+
+<ul>
+  <li>a^m^ $\equiv$ 1 (mod n), gcd(a,n) = 1
+    <ul>
+      <li>根据欧拉定理可得一定存在，m = $\phi$ (n)</li>
+      <li>最小的m为a的阶</li>
+    </ul>
+  </li>
+  <li>描述：数a的阶为 $\phi$ (n)，则称a为n的本原根</li>
+  <li>性质：若p是素数，a是p的本原根，则有： a^1^ , a^2^ , … , a^p-1^ 是模p各不相同的</li>
+</ul>
+
+:ET

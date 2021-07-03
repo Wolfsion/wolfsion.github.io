@@ -9,7 +9,7 @@ background:         'assets/img/placeholder-big.jpg'
 tiled_bg:           true  # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
 url:                https://wolfsion.github.io/
-#url:                .
+#url:                ""
 future:             true
 
 

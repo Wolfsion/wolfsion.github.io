@@ -1,0 +1,128 @@
+I"�<h1 id="计网其他先导">计网其他先导</h1>
+
+<h2 id="电路交换与分组交换">电路交换与分组交换</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">电路交换</th>
+      <th style="text-align: center">分组交换</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">独占性</td>
+      <td style="text-align: center">独占</td>
+      <td style="text-align: center">非独占</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">传输效率</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">低</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">时序性</td>
+      <td style="text-align: center">存在时序</td>
+      <td style="text-align: center">不存在时序</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">端设备要求</td>
+      <td style="text-align: center">简单</td>
+      <td style="text-align: center">复杂</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">数据直达与可控</td>
+      <td style="text-align: center">不可控</td>
+      <td style="text-align: center">可控</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">链路建立与维护</td>
+      <td style="text-align: center">需要</td>
+      <td style="text-align: center">不需要</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">可靠性与冗余保证</td>
+      <td style="text-align: center">差</td>
+      <td style="text-align: center">好</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">利用率</td>
+      <td style="text-align: center">低</td>
+      <td style="text-align: center">高</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">传输信号</td>
+      <td style="text-align: center">数字信号</td>
+      <td style="text-align: center">数字信号</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">需要终端匹配</td>
+      <td style="text-align: center">具有存储转发时延</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="传输设备与传输介质">传输设备与传输介质</h2>
+
+<ul>
+  <li>传输介质
+    <ul>
+      <li>有向介质
+        <ul>
+          <li>双绞线：屏蔽与非屏蔽</li>
+          <li>同轴电缆</li>
+          <li>光缆</li>
+        </ul>
+      </li>
+      <li>无向介质（空气）
+        <ul>
+          <li>无线电波</li>
+          <li>微波</li>
+          <li>红外波</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>传输设备</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>工作层次</strong></th>
+      <th style="text-align: center"><strong>Ⅰ</strong></th>
+      <th style="text-align: center"><strong>ⅠⅡ</strong></th>
+      <th style="text-align: center"><strong>ⅠⅡⅢ</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>相关设备</strong></td>
+      <td style="text-align: center">中继器，有源集线器</td>
+      <td style="text-align: center">网桥、两层交换机</td>
+      <td style="text-align: center">路由器、三层交换机</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>功能</strong></td>
+      <td style="text-align: center">产生多端口</td>
+      <td style="text-align: center">过滤转发+缓存</td>
+      <td style="text-align: center">快速逻辑寻址</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>冲突域</strong></td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">n</td>
+      <td style="text-align: center">n</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>广播域</strong></td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">n</td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

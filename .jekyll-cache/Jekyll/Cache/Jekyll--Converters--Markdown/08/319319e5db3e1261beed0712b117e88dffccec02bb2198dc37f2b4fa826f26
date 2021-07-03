@@ -1,0 +1,110 @@
+I"y<h1 id="计网概述">计网概述</h1>
+
+<h2 id="基本概念">基本概念</h2>
+
+<ul>
+  <li>
+    <p>协议</p>
+
+    <ul>
+      <li>概念：双端通信时必须共同遵守的规定或规则</li>
+      <li>要素：语法；语义；同步/时序</li>
+    </ul>
+  </li>
+  <li>
+    <p>传输数据(PDU)</p>
+
+    <ul>
+      <li>消息/报文：应用层</li>
+      <li>数据段/数据报：传输层，段一般对应TCP，数据报对应UDP</li>
+      <li>分组/数据包：网络层</li>
+      <li>帧：数据链路层</li>
+      <li>比特流：物理层</li>
+    </ul>
+  </li>
+  <li>
+    <p>体系结构</p>
+
+    <ul>
+      <li>实体</li>
+      <li>协议</li>
+      <li>服务</li>
+    </ul>
+  </li>
+  <li>
+    <p>数据通信</p>
+
+    <ul>
+      <li>收方与发方</li>
+      <li>报文</li>
+      <li>传输介质</li>
+      <li>协议</li>
+    </ul>
+  </li>
+  <li>
+    <p>工作模式</p>
+
+    <ul>
+      <li>单工</li>
+      <li>半双工</li>
+      <li>全双工</li>
+    </ul>
+  </li>
+  <li>
+    <p>网络：通信链路连接起来的设备集合</p>
+  </li>
+  <li>
+    <p>寻址</p>
+
+    <ul>
+      <li>物理地址：一般为MAC，主要用来标识设备</li>
+      <li>逻辑地址：IP地址，标识设备当前的连接关系</li>
+      <li>端口地址：port号，标识通信中的进程</li>
+      <li>专用地址：URL、域名</li>
+    </ul>
+
+    <p>跳到跳物理地址将改变，但逻辑地址及以上不变</p>
+  </li>
+</ul>
+
+<h2 id="基本模型osi--tcpip">基本模型(OSI &amp; TCP/IP)</h2>
+
+<ul>
+  <li>
+    <p>物理层：物理介质上传输位流</p>
+
+    <p><code class="language-plaintext highlighter-rouge">节点到节点的传递</code></p>
+  </li>
+  <li>
+    <p>数据链路层：将传输通道转变为可靠链路，保证数据无差错传输</p>
+
+    <p><code class="language-plaintext highlighter-rouge">位流-&gt;帧</code>		<code class="language-plaintext highlighter-rouge">MAC寻址</code>		<code class="language-plaintext highlighter-rouge">一跳到下一跳的传递</code></p>
+  </li>
+  <li>
+    <p>网络层：将分组从源地址传递到目的地址</p>
+
+    <p><code class="language-plaintext highlighter-rouge">帧-&gt;分组</code>		<code class="language-plaintext highlighter-rouge">IP寻址</code>		<code class="language-plaintext highlighter-rouge">端到端的传递（端可为路由器或PC）</code></p>
+  </li>
+  <li>
+    <p>传输层：报文的进程到进程的传递，保证无差错，并提供拥塞控制</p>
+
+    <p><code class="language-plaintext highlighter-rouge">分组-&gt;数据段</code>		<code class="language-plaintext highlighter-rouge">port寻址</code>		<code class="language-plaintext highlighter-rouge">进程到进程的传递</code></p>
+  </li>
+  <li>
+    <p>会话层*：负责对话控制和同步</p>
+  </li>
+  <li>
+    <p>表示层*：翻译、加密和压缩数据</p>
+  </li>
+  <li>
+    <p>应用层：使得用户可以访问网络，提供接口和服务</p>
+  </li>
+</ul>
+
+<p>说明：</p>
+
+<ol>
+  <li>数据链路层和传输层提供可靠传输和差错控制机制</li>
+  <li>各层的PDU由下到上拆解，由上到下封装，上层的PDU为下层的载荷</li>
+</ol>
+:ET
