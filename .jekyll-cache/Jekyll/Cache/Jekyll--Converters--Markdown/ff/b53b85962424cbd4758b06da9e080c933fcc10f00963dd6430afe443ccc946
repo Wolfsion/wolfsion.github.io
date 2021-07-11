@@ -1,0 +1,155 @@
+I"�<h1 id="网络层">网络层</h1>
+
+<h2 id="逻辑地址ipv4">逻辑地址(IPv4)</h2>
+
+<ul>
+  <li>概述：刻画终端的连接关系</li>
+  <li>数据格式：32bits</li>
+  <li>表示：点分十进制</li>
+  <li>组成：网络号与主机号</li>
+  <li>分类：A类地址及B、C、D、E</li>
+  <li>应用
+    <ul>
+      <li>无类寻址（注意保留网络地址与广播地址）</li>
+      <li>子网化与超网化</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ip协议">IP协议</h2>
+
+<ul>
+  <li>IPv4分组（数据报）
+    <ul>
+      <li>MTU与分段</li>
+      <li>数据格式与含义</li>
+      <li>与IPv6分组头部的区别</li>
+    </ul>
+  </li>
+  <li>IPv4 -&gt; IPv6 的过渡技术</li>
+</ul>
+
+<h2 id="地址映射">地址映射</h2>
+
+<ul>
+  <li>LA -&gt; PA（一般为以太网中的48bits的MAC地址）
+    <ul>
+      <li>ARP协议
+        <ul>
+          <li>代理ARP</li>
+          <li>过程：广播请求，单播应答</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>PA -&gt; LA
+    <ul>
+      <li>DHCP协议
+        <ul>
+          <li>向后兼容BOOTP：静态与固定；应用层协议；封装在UDP中</li>
+          <li>自身基于UDP：提供动态机制；应用层协议</li>
+          <li>动态IP分配，维护数据库</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="差错控制与多播">差错控制与多播</h2>
+
+<ul>
+  <li>差错控制
+    <ul>
+      <li>ICMP
+        <ul>
+          <li>差错报告</li>
+          <li>查询（其中ping命令基于type=8实现）</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>多播
+    <ul>
+      <li>IGMP
+        <ul>
+          <li>分类*</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="转发与路由">转发与路由</h2>
+
+<ul>
+  <li>传递
+    <ul>
+      <li>直接传递</li>
+      <li>间接传递</li>
+    </ul>
+  </li>
+  <li>转发
+    <ul>
+      <li>关键技术：下一跳；特定网络；默认方法</li>
+      <li>路由表条目至少大于4列
+        <ul>
+          <li>掩码</li>
+          <li>网络地址</li>
+          <li>下一跳地址</li>
+          <li>接口</li>
+        </ul>
+      </li>
+      <li>地址聚合，需满足最长掩码匹配原则</li>
+      <li>分层路由</li>
+    </ul>
+  </li>
+  <li>单播路由选择
+    <ul>
+      <li>域内路由
+        <ul>
+          <li>RIP
+            <ul>
+              <li>原理：距离向量</li>
+              <li>机制：基于UDP的应用层协议</li>
+              <li>不足
+                <ul>
+                  <li>不稳定性：
+                    <ul>
+                      <li>需定义抽象的不可达（无穷大）</li>
+                      <li>或分割范围，局部发表</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>OSPF
+            <ul>
+              <li>原理：链路状态</li>
+              <li>机制：基于IP层，但提供IP服务</li>
+              <li>Dijkstra算法</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>域间路由
+        <ul>
+          <li>BGP
+            <ul>
+              <li>原理：路径向量</li>
+              <li>机制：基于TCP协议的应用层协议</li>
+              <li>关键定义：AS及分类</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>多播路由选择
+    <ul>
+      <li>多播</li>
+      <li>广播</li>
+    </ul>
+  </li>
+</ul>
+:ET
