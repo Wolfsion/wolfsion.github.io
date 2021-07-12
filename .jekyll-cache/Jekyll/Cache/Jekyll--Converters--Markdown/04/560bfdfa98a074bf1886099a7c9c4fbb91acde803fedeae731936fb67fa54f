@@ -1,0 +1,148 @@
+I"�<h1 id="传输层">传输层</h1>
+
+<h2 id="两个协议">两个协议</h2>
+
+<ul>
+  <li>
+    <p>UDP：<code class="language-plaintext highlighter-rouge">端口号：17</code>	<code class="language-plaintext highlighter-rouge">无连接不可靠传输协议</code>	<code class="language-plaintext highlighter-rouge">伪头部</code></p>
+  </li>
+  <li>
+    <p>TCP：<code class="language-plaintext highlighter-rouge">端口号：6</code>	<code class="language-plaintext highlighter-rouge">传输控制协议</code></p>
+
+    <ul>
+      <li>
+        <p>其他常用端口号：FTP——20和21；SMTP——25；DNS——53；HTTP——80</p>
+      </li>
+      <li>
+        <p>描述：全双工面向连接的可靠服务；<strong>序列号和确认号都对应字节</strong></p>
+      </li>
+      <li>
+        <p>段格式{Memory}</p>
+      </li>
+      <li>
+        <p>工作过程：</p>
+
+        <ul>
+          <li>建立连接(三次握手)</li>
+        </ul>
+
+        <pre><code class="language-mermaid">sequenceDiagram
+	Client -&gt;&gt; Server:seq=x,SYN=1
+	Server -&gt;&gt; Client:seq=y,ack=x+1,SYN=1,ACK=1
+	Client -&gt;&gt; Server:seq=x+1,ack=y+1,ACK=1
+</code></pre>
+
+        <p><strong>设计的原则保证：可靠传输+传输效率，三次握手的原因：</strong></p>
+
+        <ol>
+          <li>
+            <p>双方都确认对方收到对应序列号的字节</p>
+          </li>
+          <li>
+            <p>防止旧的重复连接初始化造成混乱（服务端自认为成功，拒绝客户端请求）</p>
+          </li>
+        </ol>
+      </li>
+    </ul>
+
+    <hr />
+
+    <p><code class="language-plaintext highlighter-rouge">chip</code>：对2解释是，假设一个场景，A先向B预约在明天见面，B表示同意然后给A发了消息M，但不巧的是A并没有看到M；A过了一段时间没收到反馈认为此次邀请没有成功，（若是两次握手）B想着消息发出去了，就认为和A约定好了；A理所应当地想着换到后天再邀请一次，而B收到邀请后认为已经预约到明天了，选择不回复A拒绝了不必要的邀请。</p>
+
+    <hr />
+
+    <ul>
+      <li>
+        <p>传输：紧迫数据传输 累计确认</p>
+      </li>
+      <li>
+        <p>终止连接(四次挥手)</p>
+      </li>
+    </ul>
+
+    <pre><code class="language-mermaid">  sequenceDiagram
+  	Client -&gt;&gt; Server:seq=x,ack=y,FIN=1
+  	Server -&gt;&gt; Client:seq=y,ack=x+1,ACK=1
+  	Server -&gt;&gt; Client:seq=z,ack=x+1,FIN=1,ACK=1
+  	Client -&gt;&gt; Server:seq=x+1,ack=z+1,ACK=1
+</code></pre>
+  </li>
+</ul>
+
+<h2 id="三个服务">三个服务</h2>
+
+<ul>
+  <li>
+    <p>流量控制——信贷窗口协议
+\(size = min(rwnd, cwnd)\)
+cwnd：拥塞控制决定，rwnd：随接收方状态改变</p>
+
+    <p>窗口对应三种变化</p>
+
+    <ul>
+      <li>
+        <p>合拢：ACK确认时</p>
+      </li>
+      <li>
+        <p>张开：size增大时</p>
+      </li>
+      <li>
+        <p>收缩：不能随意使用，接收方不能操作</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>差错控制：校验和重传机制</p>
+
+    <p>重传发生于计时器超时或3个ACK重传</p>
+  </li>
+  <li>
+    <p>拥塞控制：TCP的拥塞控制用于确定cwnd</p>
+
+    <ul>
+      <li>
+        <p>拥塞策略</p>
+
+        <ul>
+          <li>慢速启动：指数增长(SS)——cwnd在每个ACK增加1MSS</li>
+          <li>拥塞避免：加性增加(AI)——cwnd在全窗口下增加1MSS</li>
+          <li>拥塞检测：乘性减少(MD)</li>
+        </ul>
+
+        <p><img src="..\assets\img\netComm-3.png" alt="image-20210712221814434" /></p>
+      </li>
+      <li>
+        <p>工作过程</p>
+      </li>
+    </ul>
+
+    <pre><code class="language-mermaid">stateDiagram
+    SS --&gt; AI:达到阈值
+    AI --&gt; MD:超时
+    MD --&gt; SS
+    note right of SS: 突变
+</code></pre>
+
+    <pre><code class="language-mermaid">stateDiagram
+    SS --&gt; AI:达到阈值
+    AI --&gt; MD:快重传
+    MD --&gt; AI 
+    note right of AI: 突变
+</code></pre>
+
+    <p><strong>突变：阈值ssthresh设为最大窗口的一半，cwnd设为1</strong></p>
+  </li>
+</ul>
+
+<h2 id="补充">补充</h2>
+
+<ul>
+  <li>Q1——数据传输层相对数据链路层所发挥的作用：
+    <ol>
+      <li>传输层的差错控制保证的粒度是端到端，覆盖到网络层发生的错误</li>
+      <li>传输层的拥塞控制参考了整个网络拓扑不仅是接收方</li>
+      <li>总的来说，两者的工作对象（PDU）和服务对象（上层协议）不同</li>
+    </ol>
+  </li>
+</ul>
+:ET

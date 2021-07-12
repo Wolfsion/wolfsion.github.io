@@ -1,0 +1,157 @@
+I"<h1 id="计网概述">计网概述</h1>
+
+<h2 id="基本概念">基本概念</h2>
+
+<ul>
+  <li>
+    <p>协议</p>
+
+    <ul>
+      <li>概念：双端通信时必须共同遵守的规定或规则</li>
+      <li>要素：语法；语义；同步/时序</li>
+      <li>特性：作用于水平两个端点（同层次）之间</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">chip</code>：协议对通信双方只是一种约束，而非强制要求，协议的正常执行依赖于合法善意的双方，而攻击者并不会完全遵从协议的规定，而只是利用协议获得关键信息，更机智的做法会令通信双方无法察觉。</p>
+
+<hr />
+
+<ul>
+  <li>
+    <p>传输数据(PDU)</p>
+
+    <ul>
+      <li>消息/报文：应用层</li>
+      <li>数据段/数据报：传输层，段一般对应TCP，数据报对应UDP</li>
+      <li>分组/数据包：网络层</li>
+      <li>帧：数据链路层</li>
+      <li>比特流：物理层</li>
+    </ul>
+  </li>
+  <li>
+    <p>体系结构</p>
+
+    <ul>
+      <li>实体：任何可发送或接收信息的硬件（设备）或软件进程（通信进程）</li>
+      <li>服务：下层向上层通过层间接口提供的（纵向单端）</li>
+    </ul>
+  </li>
+  <li>
+    <p>数据通信的五要素</p>
+
+    <ul>
+      <li>收方与发方</li>
+      <li>报文</li>
+      <li>传输介质</li>
+      <li>协议</li>
+    </ul>
+  </li>
+  <li>
+    <p>工作模式</p>
+
+    <ul>
+      <li>单工：传输通道只能用来发送或接受，且作用唯一绑定，收发操作需要发送通道和接受通道两个通道</li>
+      <li>半双工：传输通道在同一时间可发送或接受，但作用不受限制，收发需要一个通道即可，但不能并行操作收发过程</li>
+      <li>全双工：传输通道在同一时间可发送和接受</li>
+    </ul>
+  </li>
+  <li>
+    <p>网络：通信链路连接起来的设备集合</p>
+  </li>
+  <li>
+    <p>寻址</p>
+
+    <ul>
+      <li>物理地址：一般为MAC，主要用来标识设备</li>
+      <li>逻辑地址：IP地址，标识设备当前的连接关系</li>
+      <li>端口地址：port号，标识通信中的进程</li>
+      <li>专用地址：URL、域名</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">chip</code>：跳到跳物理地址将改变，但逻辑地址及以上不变</p>
+
+<hr />
+
+<h2 id="基本模型osi--tcpip">基本模型(OSI &amp; TCP/IP)</h2>
+
+<ul>
+  <li>
+    <p>物理层：物理介质上传输位流</p>
+
+    <p><code class="language-plaintext highlighter-rouge">节点到节点的传递</code></p>
+  </li>
+  <li>
+    <p>数据链路层：将传输通道转变为可靠链路，保证数据无差错传输</p>
+
+    <p><code class="language-plaintext highlighter-rouge">位流-&gt;帧</code>		<code class="language-plaintext highlighter-rouge">MAC寻址</code>		<code class="language-plaintext highlighter-rouge">一跳到下一跳的传递</code></p>
+  </li>
+  <li>
+    <p>网络层：将分组从源地址传递到目的地址</p>
+
+    <p><code class="language-plaintext highlighter-rouge">帧-&gt;分组</code>		<code class="language-plaintext highlighter-rouge">IP寻址</code>		<code class="language-plaintext highlighter-rouge">端到端的传递（端可为路由器或PC）</code></p>
+  </li>
+  <li>
+    <p>传输层：报文的进程到进程的传递，保证无差错，并提供拥塞控制</p>
+
+    <p><code class="language-plaintext highlighter-rouge">分组-&gt;数据段</code>		<code class="language-plaintext highlighter-rouge">port寻址</code>		<code class="language-plaintext highlighter-rouge">进程到进程的传递</code></p>
+  </li>
+  <li>
+    <p>会话层*：负责对话控制和同步</p>
+  </li>
+  <li>
+    <p>表示层*：翻译、加密和压缩数据</p>
+  </li>
+  <li>
+    <p>应用层：使得用户可以访问网络，提供接口和服务</p>
+  </li>
+</ul>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">chip</code>：</p>
+
+<ol>
+  <li>
+    <p>数据链路层和传输层均提供可靠传输和差错控制机制，本质由于物理层和网络层向上提供了不可靠的服务</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center"><strong>传输层（提供可靠机制）</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center"><strong>网络层（不可靠）</strong></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><strong>数据链路层（提供可靠机制）</strong></td>
+        </tr>
+        <tr>
+          <td style="text-align: center"><strong>物理层（不可靠）</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>各层的服务可靠性保证是相互独立的，下层服务可靠并不能确保上层服务可靠，本质上由于服务的粒度不同</p>
+  </li>
+  <li>
+    <p>各层的PDU由下到上拆解，由上到下封装，上层的PDU为下层的载荷</p>
+  </li>
+  <li>
+    <p>PDU实际的形式均为二进制bit流</p>
+  </li>
+</ol>
+
+<hr />
+
+:ET
